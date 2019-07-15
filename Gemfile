@@ -1,0 +1,13 @@
+source "https://rubygems.org"
+gem 'nokogiri'
+gem 'pry'
+gem 'json'
+gem 'mechanize'
+gem 'activerecord'
+gem 'logger'
+gem 'mysql2'
+gem 'selenium-webdriver'
+gem 'mecab'
+gem 'matrix'
+gem 'sinatra'
+#gem 'sinatra/reloader'

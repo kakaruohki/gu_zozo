@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>result</title>
+</head>
+<body>
+  <% if @category == "outer" %>
+  <% @items.where(category: "outer").each do |item| %>
+  <%= item.gu_item %><br>
+  <% end %>
+  <% elsif @category == "tops" %>
+  トップス
+  <% elsif @category == "bottoms" %>
+  ボトムス
+  <% elsif @category == "inner" %>
+  インナー
+  <% elsif @category == "shoes" %>
+  シューズ
+  <% elsif @category == "goods" %>
+  グッズ
+  <% end %>
+</body>
+</html>
