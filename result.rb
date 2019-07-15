@@ -1,5 +1,5 @@
-require_relative 'zozo.rb'
-require_relative 'mecab.rb'
+require_relative 'zozo'
+require_relative 'mecab'
 require 'active_record'
 require 'logger'
 require 'pry'
@@ -18,16 +18,19 @@ ActiveRecord::Base.establish_connection(
 class Items_alls < ActiveRecord::Base;
 end
 
+class Zozo_gu_items < ActiveRecord::Base;
+end
+
 
 #tops = Items_tops.all
 #pp tops
 n = 1
-Zozo.new.rank.each do |zozo_item|
-  Items_alls.pluck(:name).each do |gu_item|
-    pp [zozo_item,gu_item,Mecab.new(zozo_item, gu_item).calc_score] if !(Mecab.new(zozo_item, gu_item).calc_score == 0)
+Zozo.new.rank.each_with_index do |zozo_item, rank|
+  Items_alls.pluck(:name, :selling_price, :img_url, :url, :category).each do |gu_item|
+    score = Mecab.new(zozo_item, gu_item[0]).calc_score
+    Zozo_gu_items.create(zozo_item: zozo_item, zozo_rank: rank, gu_item: gu_item[0], gu_img_url: gu_item[2], gu_url: gu_item[3], category: gu_item[4], score: score) if score > 0.1
   end
   n += 1
-  if n == 50
-    break
-  end
+  break if n == 50
+
 end
