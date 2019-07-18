@@ -37,28 +37,6 @@ items.each do |item|
   name_array << item_name
 end
 return name_array
-#binding.pry
-=begin
-item_detail = []
-sleep(1)
-n = 0
-doc_arrays.each do |doc_array|
-  doc_array.each do |doc_dl|
-    item_color = doc_dl.css('span.txt').text
-    doc_dl.css('ul li').each do |doc|
-      item_size = doc.css('p span')[0].text.slice(/.*\//)&.gsub(/\s|\//, '')
-      item_status = doc.css('p span')[1]&.text
-      item_detail << { "#{item_color}": [item_size, item_status] }
-      #item_array << { "#{name_array[n]}": [item_size, item_status] }
-    end
-  end
-  item_array << { "#{name_array[n]}": item_detail}
-  item_detail = []
-  n += 1
-end
-binding.pry
-pp item_array
-=end
+
 end
 end
-pp Zozo.new.rank

@@ -1,5 +1,4 @@
 require 'sinatra'
-#require 'sinatra/reloader'
 require 'active_record'
 require 'logger'
 
@@ -18,27 +17,11 @@ ActiveRecord::Base.establish_connection(
   password: '',
   database: 'gu',
 )
-#class Zozo_gu_items < ActiveRecord::Base;
-#end
 
 class Zozo_gu_items < ActiveRecord::Base;
 end
 
-#get '/get' do
-#  erb :get
-#end
-#get '/confirm' do
-#  @nickname = "#{html(params[:nickname])}"
-#  erb :confirm_get
-#end
-
-#get '/confirm_get' do
-#  @items = Items_tops.all
-#  erb :confirm_get
-#end
-
 get '/get_category' do
-  #@nickname = params[:nickname]
   erb :get_category
 end
 
