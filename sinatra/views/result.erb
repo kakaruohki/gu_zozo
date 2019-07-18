@@ -7,18 +7,28 @@
 <body>
   <% if @category == "outer" %>
   <% @items.where(category: "outer").each do |item| %>
-  <%= item.gu_item %><br>
+  第<%= item.zozo_rank %>位<%= item.zozo_item %> => <a href=<%= item.gu_url %>><%= item.gu_item %></a><br>
   <% end %>
   <% elsif @category == "tops" %>
-  トップス
+  <% @items.where(category: "tops").each do |item| %>
+  第<%= item.zozo_rank %>位<%= item.zozo_item %> => <a href=<%= item.gu_url %>><%= item.gu_item %></a><br>
+  <% end %>
   <% elsif @category == "bottoms" %>
-  ボトムス
+  <% @items.where(category: "bottoms").each do |item| %>
+  第<%= item.zozo_rank %>位<%= item.zozo_item %> => <a href=<%= item.gu_url %>><%= item.gu_item %></a><br>
+  <% end %>
   <% elsif @category == "inner" %>
-  インナー
+  <% @items.where(category: "inner").each do |item| %>
+  第<%= item.zozo_rank %>位<%= item.zozo_item %> => <a href=<%= item.gu_url %>><%= item.gu_item %></a><br>
+  <% end %>
   <% elsif @category == "shoes" %>
-  シューズ
+  <% @items.where(category: "shoes").each do |item| %>
+  第<%= item.zozo_rank %>位<%= item.zozo_item %> => <a href=<%= item.gu_url %>><%= item.gu_item %></a><br>
+  <% end %>
   <% elsif @category == "goods" %>
-  グッズ
+  <% @items.where(category: "goods").each do |item| %>
+  第<%= item.zozo_rank %>位<%= item.zozo_item %> => <a href=<%= item.gu_url %>><%= item.gu_item %></a><br>
+  <% end %>
   <% end %>
 </body>
 </html>

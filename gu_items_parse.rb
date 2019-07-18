@@ -1,5 +1,6 @@
 require_relative 'common'
 
+=begin
 ActiveRecord::Base.default_timezone = :local
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 ActiveRecord::Base.establish_connection(
@@ -11,11 +12,11 @@ ActiveRecord::Base.establish_connection(
 )
 class Items_alls < ActiveRecord::Base;
 end
+=end
 
 urls = ["https://www.uniqlo.com/jp/gu/search/categories=men%252Fouter", "https://www.uniqlo.com/jp/gu/search/categories=men%252Ftops", "https://www.uniqlo.com/jp/gu/search/categories=men%252Fbottoms", "https://www.uniqlo.com/jp/gu/search/categories=men%252Finner", "https://www.uniqlo.com/jp/gu/search/categories=men%252Fshoes", "https://www.uniqlo.com/jp/gu/search/categories=men%252Fgoods"]
 urls.each_with_index do |url, index|
   item_array = Gu_parse.new(url).main
-  binding.pry
   item_array.each do |item|
     next if item[2]&.gsub(/¥/, "") == ""
     Items_alls.create(number: item[0]&.gsub(/.*：/, "").slice(/.{6}?/), name: item[1], selling_price: item[2]&.gsub(/¥|,/, ""),  url: item[3], img_url: item[4], category: "outer") if index == 0

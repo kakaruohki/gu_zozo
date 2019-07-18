@@ -28,7 +28,7 @@ n = 1
 Zozo.new.rank.each_with_index do |zozo_item, rank|
   Items_alls.pluck(:name, :selling_price, :img_url, :url, :category).each do |gu_item|
     score = Mecab.new(zozo_item, gu_item[0]).calc_score
-    Zozo_gu_items.create(zozo_item: zozo_item, zozo_rank: rank, gu_item: gu_item[0], gu_img_url: gu_item[2], gu_url: gu_item[3], category: gu_item[4], score: score) if score > 0.1
+    Zozo_gu_items.create(zozo_item: zozo_item, zozo_rank: rank+1, gu_item: gu_item[0], gu_img_url: gu_item[2], gu_url: gu_item[3], category: gu_item[4], score: score) if score > 0.3
   end
   n += 1
   break if n == 50
