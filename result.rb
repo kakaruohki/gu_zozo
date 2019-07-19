@@ -21,9 +21,7 @@ end
 class Zozo_gu_items < ActiveRecord::Base;
 end
 
-
-#tops = Items_tops.all
-#pp tops
+Zozo_gu_items.delete_all
 n = 1
 Zozo.new.rank.each_with_index do |zozo_item, rank|
   Items_alls.pluck(:name, :selling_price, :img_url, :url, :category).each do |gu_item|
